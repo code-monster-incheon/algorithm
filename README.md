@@ -33,25 +33,36 @@
 <img width="92" alt="qq" src="https://user-images.githubusercontent.com/59609682/79634830-fcdbb480-81a7-11ea-872d-fc4d06a7f04b.png">
 
 * master만 있으면 **터미널 명령어 git branch ysh** 개인 로컬 브랜치를 만들고, **터미널 명령어 git checkout ysh** 입력
-
-### 코드 작업 후에 위에 로컬 저장소 위치에서 터미널 명령어
+---
+### 작업 완료후 터미널 명령어 순서
 1. **git add .** 
 2. **git commit -m "쓰고 싶은메시지 입력"**
 3. **git fetch origin**
 4. **git rebase -i origin/develop**  (rebase)
 5. **esc 입력후 :wq (충돌 나면 해결 후 git rebase --continue 완료)**
 6. 이건 추후 결정인데 로컬 커밋이 여러번 했다면 하나 커밋으로 줄여서 pull request 필요 (ex : 자신이 로컬에서 3번 커밋을 했으면 git rebase -i HEAD~3)으로 하나로 커밋을 합친후 push ) <----나중에 얘기해요
----
-7. 원격 저장소 간 후에 아래사진에 **Pull request** 클릭
-<img width="454" alt="pull" src="https://user-images.githubusercontent.com/59609682/79635225-b471c600-81aa-11ea-84e6-cbecd44af5a1.png">
+7. git push origin [자기 로컬브랜치 이름]  
+ > ex : git push origin ysh
 
 ---
-8. 오른쪽 옆에 **초록색 New pull request** 클릭
-<img width="996" alt="crp" src="https://user-images.githubusercontent.com/59609682/79635246-db2ffc80-81aa-11ea-92f7-3afc7138018c.png">
+8. **깃 허브 push 알림 확인 후 초록색 compare & pull request 버튼 클릭**
+<img width="986" alt="rrrp" src="https://user-images.githubusercontent.com/59609682/79637933-c446d580-81bd-11ea-8620-e18a115dae34.png">
 
 ---
-9. **base : develop / compare : 개인브랜치이름** 변경 
-<img width="800" alt="pr" src="https://user-images.githubusercontent.com/59609682/79635433-dc155e00-81ab-11ea-9a4d-26d6d2f83ffa.png">
+9. base : develop , compare : ysh (자기 브랜치 이름) 후 **밑에 create new pull request 버튼 -> create pull request 버튼 클릭하여 pull request 완료** (메시지 입력안해도됨)
+<div>
+<img width="1140" alt="by" src="https://user-images.githubusercontent.com/59609682/79638238-9b274480-81bf-11ea-99eb-72bff812d047.png">
+
+<img width="1085" alt="eee" src="https://user-images.githubusercontent.com/59609682/79638321-de81b300-81bf-11ea-9411-01fd6b2940a1.png">
+
+</div>
 
 ---
+10. 아래 **Merge pull request 버튼  develop 브랜치에 merge** 클릭하여 merge 완료 ---> 아래 **초록색 Commit merge 클릭 (메시지는 전에 커밋 메시지 그대로 노출 되는데 바꿔도됨)**
+<img width="1079" alt="merge" src="https://user-images.githubusercontent.com/59609682/79638457-58b23780-81c0-11ea-8c98-c7c363b6888a.png">
 
+
+<img width="1099" alt="commit_merge" src="https://user-images.githubusercontent.com/59609682/79638521-bcd4fb80-81c0-11ea-998a-1f2f6bd48b76.png">
+---
+
+11. 완료
