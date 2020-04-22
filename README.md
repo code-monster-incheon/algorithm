@@ -35,12 +35,12 @@
 * master만 있으면 **터미널 명령어 git branch ysh** 개인 로컬 브랜치를 만들고, **터미널 명령어 git checkout ysh** 입력
 ---
 ### 작업 완료후 터미널 명령어 순서
-1. **git add .** 
-2. **git commit -m "쓰고 싶은메시지 입력"**
-3. **git fetch origin**
-4. **git rebase -i origin/develop**  (rebase)
+1. **git add .** (스테이징)
+2. **git commit -m "쓰고 싶은메시지 입력"**(커밋)
+3. **git fetch origin** (origin 정보 패치)
+4. **git rebase -i origin/develop**  (rebase) 
 5. **esc 입력후 :wq (충돌 나면 해결 후 git rebase --continue 완료)**
-6. 이건 추후 결정인데 로컬 커밋이 여러번 했다면 하나 커밋으로 줄여서 pull request 필요 (ex : 자신이 로컬에서 3번 커밋을 했으면 git rebase -i HEAD~3)으로 하나로 커밋을 합친후 push ) <----나중에 얘기해요
+6. 이건 추후 결정인데 로컬 커밋이 여러번 했다면 하나 커밋으로 줄여서 pull request 필요 (ex : 자신이 로컬에서 3번 커밋을 했으면 git rebase -i HEAD~3)으로 하나로 커밋을 합친후 push squash) <----나중에 얘기해요
 7. git push origin [자기 로컬브랜치 이름]  
  > ex : git push origin ysh
 
