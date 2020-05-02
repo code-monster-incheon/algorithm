@@ -1,5 +1,5 @@
-# 1. 2020 - 04 - 25 ~ 2020 - 05 - 02 공지
- - 2018 KAKAO BLIND RECRUITMENT 풀기
+# 1. 2020 - 04 - 25 ~ 2020 - 05 - 09 공지
+ - 2018 KAKAO BLIND RECRUITMENT 완료하기
 
 # 2. 문제 리스트 (아래 사진 첨부)
 <img width="799" alt="스크린샷 2020-04-25 오후 3 13 02" src="https://user-images.githubusercontent.com/59609682/80273868-0b2e5100-8711-11ea-8558-e7c9eee6c37a.png">
