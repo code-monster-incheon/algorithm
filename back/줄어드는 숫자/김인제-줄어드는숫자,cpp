@@ -1,0 +1,103 @@
+// dp 와 재귀 활용해서 해결
+// https://www.acmicpc.net/problem/1174
+
+#include <iostream>
+#include <algorithm>
+#include <string.h>
+#include <vector>
+#include <queue>
+#include <map>
+#include <set>
+#include <string>
+#include <climits>
+#include <cstdio>
+using namespace std;
+#pragma warning(disable:4996)
+typedef long long ll;
+
+// 자리수, 시작숫자
+int cache[11][10];
+int preSum[11][10];
+int horizontalSum[11];
+int horizontalPreSum[11];
+
+string find(int idx, int k) {
+   if (idx == 1) {
+      char ret = k -1+ '0';
+      string s = "";
+      s += ret;
+      return s;
+   }
+
+   string ret = "";
+   int last = idx-1;
+   int lastSum = 0;
+   for (int i = idx-1; i < 10; i++) {
+      
+      int sum = horizontalPreSum[idx - 1] + preSum[idx][i - 1];
+      if (horizontalPreSum[idx - 1] + preSum[idx][i-1] < k ) {
+         last = i;
+         lastSum = sum;
+      }
+   }
+   ret += (char('0' + last) + find(idx - 1, k - lastSum + horizontalPreSum[idx-2]));
+
+   return ret;
+}
+
+int main() {
+   int k;
+   cin >> k;
+
+   if (k <= 10)
+   {
+      cout << k - 1 << endl;
+      return 0;
+   }
+   if (k > 1023)
+   {
+      cout << -1 << endl;
+      return 0;
+   }
+   memset(cache, -1, sizeof(cache));
+
+   for (int i = 1; i < 11; i++) {
+      for (int j = i-1; j < 10; j++) {
+         if (i == 1) {
+            cache[i][j] = 1;
+            if (j == 0)
+               preSum[i][j] = cache[i][j];
+            else
+               preSum[i][j] = preSum[i][j - 1] + cache[i][j];
+         }
+         else {
+            if (j == i - 1) {
+               cache[i][j] = 1;
+               preSum[i][j] = cache[i][j];
+            }
+            else {
+               cache[i][j] = preSum[i - 1][j-1];
+               preSum[i][j] = preSum[i][j - 1] + cache[i][j];         
+            }
+         }
+      }
+   }
+
+   horizontalPreSum[1] = preSum[1][9];
+   for (int i = 2; i < 11; i++) {
+      horizontalSum[i] = preSum[i][9];
+      horizontalPreSum[i] = horizontalPreSum[i-1] + preSum[i][9];
+   }
+
+   int idx = 0;
+   for (int i = 1; i < 11; i++) {
+      if (horizontalPreSum[i] >= k) {
+         idx = i;
+         break;
+      }
+   }
+   cout << find(idx, k) << endl;
+
+
+   return 0;
+}
