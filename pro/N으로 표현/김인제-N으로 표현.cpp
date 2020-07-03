@@ -11,7 +11,6 @@ https://programmers.co.kr/learn/courses/30/lessons/42895
 - (N / N) == - 1
 
 */
-
 #include <string>
 #include <vector>
 #include <string.h>
@@ -22,7 +21,7 @@ int cache[10][300000];
 int N, number;
 const int INF = 987654321;
 
-int dp(int count, int sum, string calc){
+int dp(int count, int sum){
     if (count > 8)
         return INF;
     
@@ -40,17 +39,15 @@ int dp(int count, int sum, string calc){
     
     ret = INF;
     
-
-    
     for(int n = N, i = 1; n <= N * number; n = n*10 + N, i++){
-        ret = min(ret, dp(count + i, sum + n, calc + " +N "));
-        ret = min(ret, dp(count + i, sum * n, calc + " *N "));
-        ret = min(ret, dp(count + i, int(sum / n), calc + " /N "));
-        ret = min(ret, dp(count + i, sum - n, calc + " -N "));
+        ret = min(ret, dp(count + i, sum + n));
+        ret = min(ret, dp(count + i, sum * n));
+        ret = min(ret, dp(count + i, int(sum / n)));
+        ret = min(ret, dp(count + i, sum - n));
     }
     
-    ret = min(ret, dp(count + 2, sum + 1, calc + " +(N / N) "));
-    ret = min(ret, dp(count + 2, sum - 1, calc + " -(N / N) "));
+    ret = min(ret, dp(count + 2, sum + 1));
+    ret = min(ret, dp(count + 2, sum - 1));
       
     return ret;
 }
@@ -61,6 +58,6 @@ int solution(int N, int number) {
     ::number = number;
     
     memset(cache, -1, sizeof(cache));
-    answer = dp(0, 0, "");
+    answer = dp(0, 0);
     return answer == INF ? -1 : answer;
 }
